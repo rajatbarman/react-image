@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {
   node,
   func,
+  any,
   oneOfType,
   string,
   array,
@@ -11,6 +12,7 @@ import {
 
 const cache = {}
 const imgPropTypes = {
+  imageRef: any,
   loader: node,
   unloader: node,
   decode: bool,
@@ -212,6 +214,7 @@ class Img extends Component {
       loaderContainer,
       unloaderContainer,
       mockImage,
+      imageRef,
 
       ...rest
     } = this.props //eslint-disable-line
@@ -223,7 +226,7 @@ class Img extends Component {
         ...rest
       }
 
-      return container(<img {...imgProps} />)
+      return container(<img ref={imageRef} {...imgProps} />)
     }
 
     // if we are still trying to load, show img and a loader if requested
